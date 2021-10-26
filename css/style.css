@@ -1,0 +1,30 @@
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+nav, main {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+.navbar-brand{
+    color: #29B1DD;
+    font-size: 30px;
+    padding-top: 20px;
+}
+
+.box-filter{
+    background-color:  #29B1DD ;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+}
+
+.container{
+    background-color: #DDDDDD;
+    height: 50px;
+}
