@@ -1,5 +1,10 @@
 const boxContainer = document.querySelector('.box-container');
+const formSelect = document.querySelector('.form-select');
+
+
+
 console.log(boxContainer)
+console.log(formSelect)
 const iconArray = [
 	{
 		nome: 'cat',
@@ -99,28 +104,68 @@ const iconArray = [
 	}
 ];
 
+const colorIcon = {
+    'animal': 'blue',
+    'vegetable' : 'orange',
+    'user' : 'violet'
+};
+console.log(colorIcon)
 
+function groupByType (iconArray) {
+
+    const groupByType = {};
+
+    for (let i = 0; i < iconArray.length; i++) {
+        const {type, nome} = iconArray[i];
+
+        if (!groupByType[type]){
+
+           groupByType[type] = [] ;
+        }
+        groupByType[type].push({
+            'nome':nome,
+            'type':type,
+
+            color(){
+                return colorIcon[type];
+            }
+        });
+
+    }
+    
+    console.log(groupByType)
+    return groupByType;
+    
+}
+
+groupByType(iconArray)
 
 
 const cardIcon = iconArray.map((iconSingleArray) => {
 
+    const  {nome,family, prefix, type}= iconSingleArray
+
+    const color = colorIcon[type];
 //inserisco il mio html nel dom 
     boxContainer.innerHTML += ` 
     
     <div class="card-box-container">
     <div class="card-img-logo">
-      <i class="${iconSingleArray.family} ${iconSingleArray.prefix + iconSingleArray.nome}"></i>
+      <i class="${family} ${prefix + nome}" style="color:${color}"></i>
     </div>
     <div class="card-name-text">
-      <div class="card-title text-center">${iconSingleArray.nome}</div>
+      <div class="card-title text-center">${nome}</div>
     </div>
     </div>`
 
 
     return {
-        indice: iconSingleArray,
-		
+       
+        indice: iconSingleArray,	
     }
 })
 console.log(cardIcon)
+
+
+
 
